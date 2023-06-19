@@ -19,13 +19,10 @@ function addListItems() {
 
 // Function to check if user has reached the end of list
 function checkEndOfList() {
-  const listRect = list.getBoundingClientRect();
-  const listBottom = listRect.top + listRect.height;
+  const listBottom = list.getBoundingClientRect().bottom;
   const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-  const distanceToBottom = listBottom - viewportHeight - scrollPosition;
 
-  if (distanceToBottom < 2) {
+  if (listBottom <= viewportHeight) {
     addListItems();
   }
 }
